@@ -1,4 +1,4 @@
-dummy
+jee-sandbox-ear
 =====================
 
 What is it?
@@ -44,9 +44,9 @@ You can now deploy the artifact to JBoss AS by executing the following command:
 
     mvn jboss-as:deploy
 
-This will deploy `target/dummy.ear`.
+This will deploy `target/jee-sandbox-ear.ear`.
  
-The application will be running at the following URL <http://localhost:8080/dummy/>.
+The application will be running at the following URL <http://localhost:8080/jee-sandbox-ear/>.
 
 To undeploy from JBoss AS, run this command:
 
