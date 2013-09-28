@@ -5,13 +5,12 @@ import javax.enterprise.inject.New;
 import javax.enterprise.inject.Produces;
 
 import com.clearprecision.sandbox.cdi.interfaces.DataStore;
-import com.clearprecision.sandbox.cdi.qualifiers.Production;
 
 public class DataStoreProducer {
 
 	@Produces
 	@RequestScoped
-	@Production
+	@com.clearprecision.sandbox.cdi.qualifiers.DataStore
 	public DataStore getDataStore(@New TestDataStore testDataStore,
 			@New ProductionDataStore productionDataStore) {
 

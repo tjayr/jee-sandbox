@@ -1,15 +1,15 @@
 package com.clearprecision.sandbox.cdi.qualifiers;
 
-import java.lang.annotation.ElementType;
+import static java.lang.annotation.ElementType.*;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.enterprise.inject.Stereotype;
+import javax.inject.Qualifier;
 
-@Stereotype
+@Qualifier
 @Retention(RetentionPolicy.RUNTIME)
-@Target(value = { ElementType.TYPE, ElementType.FIELD, ElementType.METHOD })
+@Target({ METHOD, FIELD, PARAMETER, TYPE })
 public @interface Production {
 
 }
