@@ -54,6 +54,8 @@
 	</dependencies>
 	<profiles>
 
+
+	
 		<profile>
 			<id>jboss-debug</id>
 			<activation>
@@ -113,7 +115,7 @@
 							</artifactItems>
 						</configuration>
 					</plugin>
-					
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
@@ -147,25 +149,33 @@
 			<!-- Profile dependencies -->
 
 			<dependencies>
-				<dependency>
+				<!-- <dependency>
 					<groupId>org.jboss.as</groupId>
 					<artifactId>jboss-as-arquillian-container-managed</artifactId>
 					<version>7.1.3.Final</version>
 					<scope>test</scope>
-				</dependency>
+				</dependency>-->
+
 				<dependency>
-					<groupId>org.jboss.spec</groupId>
-					<artifactId>jboss-javaee-6.0</artifactId>
-					<version>1.0.0.Final</version>
-					<type>pom</type>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.jboss.arquillian.protocol</groupId>
-					<artifactId>arquillian-protocol-servlet</artifactId>
-					<version>1.1.1.Final</version>
+					<groupId>org.jboss.as</groupId>
+					<artifactId>jboss-as-arquillian-container-remote</artifactId>
+					<version>7.2.0.Final</version>
 					<scope>test</scope>
-				</dependency>
+					</dependency>
+
+					<dependency>
+						<groupId>org.jboss.spec</groupId>
+						<artifactId>jboss-javaee-6.0</artifactId>
+						<version>1.0.0.Final</version>
+						<type>pom</type>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.arquillian.protocol</groupId>
+						<artifactId>arquillian-protocol-servlet</artifactId>
+						<version>1.1.1.Final</version>
+						<scope>test</scope>
+					</dependency>
 			</dependencies>
 			<build>
 				<plugins>
