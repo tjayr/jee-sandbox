@@ -1,9 +1,10 @@
 package com.clearprecision.sandbox.cdi;
 
 import com.clearprecision.sandbox.cdi.interfaces.DataStore;
-import com.clearprecision.sandbox.cdi.qualifiers.Test;
+import com.clearprecision.sandbox.cdi.qualifiers.DatabaseEnv;
+import com.clearprecision.sandbox.cdi.qualifiers.EnvironmentTypes;
 
-@Test
+@DatabaseEnv(EnvironmentTypes.TEST)
 public class TestDataStore implements DataStore {
 
 	@Override
