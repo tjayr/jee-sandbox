@@ -16,26 +16,49 @@
  */
 package com.clearprecision.dps;
 
+import java.util.Hashtable;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import com.clearprecision.medcore.api.MediationCoreInterface;
 
 @Stateless
 public class DpsDelegate {
-	
+
 	private static final Logger log = Logger.getLogger("DpsDelegate");
 
-	@EJB(lookup = "java:jboss/exported/medcore-ear-0.0.1-SNAPSHOT/medcore-ejb/Router!com.clearprecision.medcore.api.MediationCoreInterface")
-	private MediationCoreInterface router;
+	//@EJB(lookup = "java:jboss/exported/medcore-ear-0.0.1-SNAPSHOT/medcore-ejb/Router!com.clearprecision.medcore.api.MediationCoreInterface")
+	//private MediationCoreInterface router;
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void process() {
-		log.info("Calling router");
-		router.call();
+		MediationCoreInterface router;
+		try {
+			router = lookupRemoteEJB();
+			router.call();
+		} catch (NamingException e) {
+			log.severe(e.toString());
+		}
 	}
+
+	private static MediationCoreInterface lookupRemoteEJB()
+			throws NamingException {
+
+		final Hashtable jndiProperties = new Hashtable();
+		jndiProperties.put(Context.URL_PKG_PREFIXES,
+				"org.jboss.ejb.client.naming");
+		final Context context = new InitialContext(jndiProperties);
+		log.info("Looking EJB via JNDI ");
+
+		return (MediationCoreInterface) context
+				.lookup("ejb:medcore-ear-0.0.1-SNAPSHOT/medcore-ejb/Router!com.clearprecision.medcore.api.MediationCoreInterface");		
+	}
+
 }
