@@ -1,5 +1,6 @@
 package com.clearprecision.ejb;
 
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.interceptor.Interceptors;
@@ -16,8 +17,11 @@ public class JeeService {
 	@Inject
 	private Logger logger;
 
+	@Resource(name = "APPVERSION")
+	private String version;
+
 	public void invokeService() {
-		logger.info("Activate JeeService service");
+		logger.info("Activate JeeService service version {}", version);
 	}
 
 }
