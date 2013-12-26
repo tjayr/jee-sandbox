@@ -10,16 +10,16 @@ import com.clearprecision.sandbox.cdi.interfaces.DataStore;
 @ApplicationScoped
 public class Boundary {
 
-	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Boundary.class);
-		
+	private static final Logger logger = org.slf4j.LoggerFactory
+			.getLogger(Boundary.class);
+
 	@Inject
 	DataStore dataStore;
-	
-	
-	
+
 	public String getDataStoreName() {
 		String name = dataStore.getName();
-		logger.info("Boundary postcontruct, dataStore created with name {}", name);
+		logger.info("Boundary postcontruct, dataStore created with name {}",
+				name);
 		return name;
 	}
 

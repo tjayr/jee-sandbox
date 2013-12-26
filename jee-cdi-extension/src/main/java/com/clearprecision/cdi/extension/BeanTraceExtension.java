@@ -37,7 +37,7 @@ public class BeanTraceExtension implements Extension {
 	
 	
 	<T> void processBean(@Observes ProcessBean<T> bean) {
-		logger.info("Extension found bean with name {}", bean.getBean().getName());
+		logger.info("Extension found bean with class {} and name {}", bean.getBean().getBeanClass(), bean.getBean().getName());
 	}
 	
 }
